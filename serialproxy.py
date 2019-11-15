@@ -1,14 +1,16 @@
-#  pip install pyserial
+# pip install pyserial
 
 import time, sys, serial
 import collections
 import re
 from serial import SerialException
 
-SERIALPORT1 = "/dev/cu.wchusbserial14510"  # the default com/serial port the receiver is connected to
+#SERIALPORT1 = "/dev/cu.usbserial-1440"  # the default com/serial port the receiver is connected to
+SERIALPORT1 = "/dev/cu.wchusbserial14510"
 BAUDRATE1 = 115200      # default baud rate we talk to Moteino
 
-SERIALPORT2 = "/dev/cu.usbserial-14510"  # the default com/serial port the receiver is connected to
+#SERIALPORT2 = "/dev/cu.usbserial-A7032XZL"  # the default com/serial port the receiver is connected to
+SERIALPORT2 = "/dev/cu.usbserial-14510"
 BAUDRATE2 = 115200      # default baud rate we talk to Moteino
 
 
@@ -40,14 +42,15 @@ if __name__ == "__main__":
                 #rx1 = ser1.read(ser1_waiting)
                 rx1 = ser1.readline()
                 ser2.write(rx1)
-                print("rx1:{}".format(rx1))
+                print("rx1:{}".format(repr(rx1)))
 
             ser2_waiting = ser2.inWaiting()
             if ser2_waiting > 0:
                 #rx2 = ser2.read(ser2_waiting)
                 rx2 = ser2.readline()
                 ser1.write(rx2)
-                print(repr( rx2))       
+                #print(repr( rx2))       
+                print("rx2:{}".format(repr(rx1)))
 
     except IOError:
         print(IOError)
