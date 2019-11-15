@@ -50,7 +50,7 @@ if __name__ == "__main__":
                 rx2 = ser2.readline()
                 ser1.write(rx2)
                 #print(repr( rx2))       
-                print("rx2:{}".format(repr(rx1)))
+                print("rx2:{}".format(repr(rx2)))
 
     except IOError:
         print(IOError)
